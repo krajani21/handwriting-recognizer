@@ -12,6 +12,8 @@ function usually called by our neural network code.
 import pickle
 import gzip
 import numpy as np
+import os
+from model.network import Network
 
 def load_data():
     """Return the MNIST data as a tuple containing the training data,
@@ -79,3 +81,7 @@ def vectorized_result(j):
     e = np.zeros((10, 1))
     e[j] = 1.0
     return e
+
+def load_model():
+    with open(os.path.join("model", "trained_model.pkl"), "rb") as f:
+        return pickle.load(f)
